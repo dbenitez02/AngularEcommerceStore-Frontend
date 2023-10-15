@@ -5,10 +5,12 @@
                 <!--Collection of products-->
                 <div *ngFor="let tempProduct of products" class="col-md-3">
                     <div class="product-box">
-                        <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+                        </a>
                         <h1>{{tempProduct.name}}</h1>
                         <div class="price">{{tempProduct.unitPrice | currency: 'USD'}}</div>
-                        <a href="#">Add to cart</a>
+                        <button class="btn btn-sm btn-primary" href="#" role="button">Add to cart</button>
                     </div>
                 </div>
                 <!-- If no products are found -->
