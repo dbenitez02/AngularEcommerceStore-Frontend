@@ -9,19 +9,15 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ProductService {
 
-
-
   private baseUrl = 'http://localhost:8080/api/products';
   private categoryUrl = 'http://localhost:8080/api/product-category';
 
   constructor(private httpClient: HttpClient) { }
 
   getProductList(theCategoryId: number): Observable<Product[]> {
-    const serachUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
-
-    return this.httpClient.get<GetResponseProducts>(serachUrl).pipe(
-      map(response => response._embedded.products)
-    );
+    const serachUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
+    return this.getProducts(serachUrl);
+  
   }
   
   getProductCategories(): Observable<ProductCategory[]> {
@@ -31,6 +27,16 @@ export class ProductService {
     );
   }
 
+  searchProducts(keyword: string) {
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`
+    return this.getProducts(searchUrl);
+  }
+
+  private getProducts(searchUrl: string) {
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
+      map(response => response._embedded.products)
+    );
+  }
 }
 
 
