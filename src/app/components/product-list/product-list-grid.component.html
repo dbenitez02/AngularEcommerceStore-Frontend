@@ -10,7 +10,7 @@
                         </a>
                         <h1>{{tempProduct.name}}</h1>
                         <div class="price">{{tempProduct.unitPrice | currency: 'USD'}}</div>
-                        <button class="btn btn-sm btn-primary" href="#" role="button">Add to cart</button>
+                        <button class="btn btn-sm btn-primary" (click)="addToCart(tempProduct)" role="button">Add to cart</button>
                     </div>
                 </div>
                 <!-- If no products are found -->
@@ -39,9 +39,9 @@
                                 <span class="mr-2">Page Size</span>
                                 <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
                                     <option selected="true">5</option>
-                                    <option selected="true">10</option>
-                                    <option selected="true">15</option>
-                                    <option selected="true">25</option>
+                                    <option>10</option>
+                                    <option>15</option>
+                                    <option>25</option>
                                 </select>
                             </div>
                         </div>

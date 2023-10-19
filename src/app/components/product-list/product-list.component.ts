@@ -12,8 +12,8 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
   currentCategoryId: number = 1;
-  searchMode: boolean = false;
   previousCategoryId: number = 1;
+  searchMode: boolean = false;
 
   // For pagination
   pageNumber: number = 1;
@@ -99,9 +99,13 @@ export class ProductListComponent implements OnInit {
   processResult() {
     return (data: any) => {
       this.products = data._embedded.products;
-      this.pageNumber = data.pageNumber + 1;
-      this.pageSize = data.pageSize;
-      this.totalElements = data.totalElements;
+      this.pageNumber = data.page.number + 1;
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
     }
+  }
+
+  addToCart(product: Product) {
+    console.log(`Adding to cart: ${product.name}: ${product.unitPrice}`)
   }
 }
