@@ -23,7 +23,8 @@
                                 <h5>Quantity:</h5>
                                 <div class="row no-gutters">
                                     <div class="col">
-                                        <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                        <button (click)="incrementQuantity(tempCartItem)"
+                                            class="btn btn-primary btn-sm">
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
@@ -31,7 +32,8 @@
                                         {{ tempCartItem.quantity }}
                                     </div>
                                     <div class="col">
-                                        <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                        <button (click)="decrementQuantity(tempCartItem)"
+                                            class="btn btn-primary btn-sm">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
@@ -45,9 +47,13 @@
                     <tr>
                         <td colspan="2"></td>
                         <td style="font-weight: bold;">
-                            <p>Total Quantity; {{ totalQuantity }}</p>
-                            <p>Shipping: Free</p>
-                            <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                            <div>
+                                <p>Total Quantity; {{ totalQuantity }}</p>
+                                <p>Shipping: Free</p>
+                                <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
+                                <button routerLink="/checkout" class="btn btn-primary btn-sm"
+                                    role="button">Checkout</button>
+                            </div>
                         </td>
                     </tr>
                 </table>
