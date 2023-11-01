@@ -34,14 +34,16 @@
                         <div class="col-md-6">
                             <label>Country</label>
                             <div class="input-space">
-                                <select formControlName="country" type="text">
-                                    <option>To add soon</option>
+                                <select formControlName="country" type="text" (change)="getStates('shippingAddress')">
+                                    <option *ngFor="let country of countries" [ngValue]="country">
+                                        {{ country.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <label>Street</label>
                             <div class="input-space">
                                 <input formControlName="street" type="text">
@@ -55,11 +57,13 @@
                                 <input formControlName="city" type="text">
                             </div>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <label>State</label>
                             <div class="input-space">
-                                <select formControlName="country" type="text">
-                                    <option>To add soon</option>
+                                <select formControlName="state" type="text">
+                                    <option *ngFor="let state of shippingAddressStates" [ngValue]="state">
+                                            {{ state.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -70,8 +74,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+
                 <!-- Provide option to copy shipping address to billing address -->
                 <div class="input-space">
                     <label class="au-checkbox">
@@ -79,6 +83,7 @@
                         <span class="au-checkmark"></span>Billing Address is same as Shipping Address
                     </label>
                 </div>
+
                 <!-- Billing Address -->
                 <div formGroupName="billingAddress" class="form-area">
                     <h3>Billing Address Info</h3>
@@ -86,14 +91,16 @@
                         <div class="col-md-6">
                             <label>Country</label>
                             <div class="input-space">
-                                <select formControlName="country" type="text">
-                                    <option>To add soon</option>
+                                <select formControlName="country" type="text" (change)="getStates('billingAddress')">
+                                    <option *ngFor="let country of countries" [ngValue]="country">
+                                        {{ country.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <label>Street</label>
                             <div class="input-space">
                                 <input formControlName="street" type="text">
@@ -107,11 +114,13 @@
                                 <input formControlName="city" type="text">
                             </div>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <label>State</label>
                             <div class="input-space">
-                                <select formControlName="country" type="text">
-                                    <option>To add soon</option>
+                                <select formControlName="state" type="text">
+                                    <option *ngFor="let state of billingAddressStates" [ngValue]="state">
+                                        {{ state.name }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -131,7 +140,7 @@
                         <div class="col-md-3">
                             <label>Card Type</label>
                             <div class="input-space">
-                                <select formControlName="cardType" type="text">
+                                <select formControlName="cardType">
                                     <option>Visa</option>
                                     <option>Master Card</option>
                                 </select>
@@ -163,17 +172,19 @@
                         </div>
                         <div class="col-md-1"><label>Month</label>
                             <div class="input-space">
-                                <select formControlName="cardType" type="text">
-                                    <option>Jan-01</option>
-                                    <option>Feb-02</option>
+                                <select formControlName="expirationMonth">
+                                    <option *ngFor="let month of creditCardMonths">
+                                        {{ month }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-1"><label>Year</label>
                             <div class="input-space">
-                                <select formControlName="cardType" type="text">
-                                    <option>2022</option>
-                                    <option>2023</option>
+                                <select formControlName="expirationYear" (change)="handleMonthsAndYears()">
+                                    <option *ngFor="let year of creditCardYears">
+                                        {{ year }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
