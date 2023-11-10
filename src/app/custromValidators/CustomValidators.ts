@@ -3,11 +3,11 @@ import { FormControl, ValidationErrors } from "@angular/forms";
 export class CustomValidators {
     static notOnlyWhiteSpace(control: FormControl): ValidationErrors {
 
-        if ((control.valid != null) && (control.value.trim().length === 0)) {
+        if ((control.value != null) && (control.value.trim().length === 0)) {
             return { 'notOnlyWhiteSpace': true };
         }
         else {
-            return {'notOnlyWhiteSpace' : null };
+            return {'notOnlyWhiteSpace': null };
 
         }
     }
